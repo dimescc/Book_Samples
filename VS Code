@@ -2,4 +2,9 @@ Tips and tricks: https://code.visualstudio.com/docs/getstarted/tips-and-tricks
 Commandos: Keyboard Shortcut: Ctrl+Shift+P
 Open Recent file: Ctrl+R
 Errors and Warning: Ctrl+Shift+M
-Extensions: Ctrl+Shift+X
+Extensions: Ctrl+Shift+X links im Menü die 4 Vierecke
+Navigate to a specific line: Ctrl+G
+GO to a reference: Shift+F12
+Git Integration: Ctrl+Shift+G
+Easily switch between Git branches via the Status Bar
+Portable mode: VS Code has a Portable mode which lets you keep settings and data in the same location as your installation, for example, on a USB drive.
