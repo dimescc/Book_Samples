@@ -24,14 +24,9 @@ if typ == "1":
     f.write("# Befehle: https://github.com/LeCoupa/awesome-cheatsheets/blob/master/tools/docker.sh\n")
     f.write("# Create a local Docker container, Clone this repository first:\n\n")
     f.write("Build the docker container\n")
-    f.write("$ docker build -t ")
-    f.write(appli)
-    f.write(" .\n")
+    f.write("$ docker build -t "); f.write(appli), f.write(" .\n")
     f.write("\nRun the container\n")
-    f.write("$ docker run --rm -p ")
-    f.write(porti)
-    f.write(":5000 ")
-    f.write(appli)
+    f.write("$ docker run --rm -p "); f.write(porti); f.write(":5000 "), f.write(appli)
     f.write("\n\nTo add more instances, vary the public port number before the colon:\n")
     f.write("$ docker run --rm -p 81:5000 blockchain\n")
     f.close()
@@ -44,15 +39,9 @@ elif typ == "2":
     filei = "C:\\MYFiles_TPc\\" + typ_chosen["2"]
     f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
     f.write("{\n")
-    f.write("  \"name\": \"")
-    f.write(appli)
-    f.write("\",\n")
-    f.write("  \"description\": \"")
-    f.write(desc)
-    f.write("\",\n")
-    f.write("  \"version\": \"")
-    f.write(vers)
-    f.write("\",\n")
+    f.write("  \"name\": \""); f.write(appli); f.write("\",\n")
+    f.write("  \"description\": \""); f.write(desc); f.write("\",\n")
+    f.write("  \"version\": \""); f.write(vers); f.write("\",\n")
     f.write("  \"private\": true,\n")
     f.write("  \"scripts\": {\n")
     f.write("    \"start\": \"node ./bin/www\"\n")
@@ -75,11 +64,8 @@ elif typ == "4":
     filei = "C:\\MYFiles_TPc\\" + typ_chosen["4"]
     f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
     f.write("\n# Welcome to the Python script. Copyright T. Puchegger (DIMESCC) 2022 \n\n")
-    f.write("Import ")
-    f.write(impor)
-    f.write("\n\ndef ")
-    f.write(func)
-    f.write(": \n")
+    f.write("Import "); f.write(impor)
+    f.write("\n\ndef "); f.write(func); f.write(": \n")
     f.write("   erg = argA * argB \n")
     f.write("   print(erg)\n\n")
     f.write(func)
@@ -96,19 +82,13 @@ elif typ == "5":
     f.write("apiVersion: v1\n")
     f.write("kind: Pod\n")
     f.write("metadata:\n")
-    f.write("  name: ")
-    f.write(appli)
+    f.write("  name: "); f.write(appli)
     f.write("\nspec:\n")
     f.write("  containers:\n")
-    f.write("  - name: ")
-    f.write(appli)
-    f.write("\n    image: ")
-    f.write(appli)
-    f.write(":")
-    f.write(vers)
+    f.write("  - name: "); f.write(appli)
+    f.write("\n    image: "); f.write(appli); f.write(":"); f.write(vers)
     f.write("\n    ports:")
-    f.write("\n    - containerPort: ")
-    f.write(port)
+    f.write("\n    - containerPort: "); f.write(port)
     f.write("\n\n # To create the Pod shown above, run the following command:")
     f.write("\n # kubectl apply -f https://k8s.io/examples/pods/simple-pod.yaml")
     f.close()
@@ -124,10 +104,7 @@ elif typ == "5":
     f.write("    spec:\n")
     f.write("      containers:\n")
     f.write("      - name: hello\n")
-    f.write("        image: ")
-    f.write(appli)
-    f.write(":")
-    f.write(vers)
+    f.write("        image: "); f.write(appli); f.write(":"); f.write(vers)
     f.write("\n        command: ['sh', '-c', 'echo \"Hello, Kubernetes!\" && sleep 3600']\n")   
     f.write("       restartPolicy: OnFailure\n")
     f.write("    # The pod template ends here")
@@ -135,34 +112,24 @@ elif typ == "5":
 
 # Latex File
 elif typ == "6":
-    typ = input("Document Type or Class (Book, Report, Letter, Article, ...): ")
-    c1 = input("Chapter 1: ")
-    c2 = input("Chapter 2: ")
+    typ = input("Document Class (Book, Report, Letter, Article, ...): ")
+    tit = input("Title of the Document: ")
+    dat = input("Date for the Document: ")
+    aut = input("Author of the Document: ")
     filei = "C:\\MYFiles_TPc\\" + typ_chosen["6"]
     f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
-    f.write("Document Type ")
-    \documentclass[12pt, letterpaper, twoside]{article}
-\usepackage[utf8]{inputenc}
-
-\title{First document}
-\author{Hubert Farnsworth \thanks{funded by the Overleaf team}}
-\date{February 2014}
-
-\begin{document}
-
-\begin{titlepage}
-\maketitle
-\end{titlepage}
-
-In this document some extra packages and parameters
-were added. There is an encoding package
-and pagesize and fontsize parameters.
-
-\end{document}
-
-    f.close()
-		
-			
+    f.write("\n\documentclass[12pt, letterpaper, twoside]{"); f.write(typ); f.write("}\n")
+    f.write("\usepackage[utf8]{inputenc}\n")
+    f.write("\title{"); f.write(tit); f.write("}\n")
+    f.write("\author{"); f.write(aut); f.write("}\n")
+    f.write("\date{"); f.write(dat); f.write("}\n")
+    f.write("\begin{document}\n")
+    f.write("\begin{titlepage}\n")
+    f.write("\maketitle\n")
+    f.write("\end{titlepage}\n")
+    f.write("This is the text to the document which can be edited later...")
+    f.write("\end{document}\n")
+    f.close()			
 
  
  
