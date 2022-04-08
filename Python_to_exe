@@ -1,0 +1,5 @@
+pyinstaller --onefile pythonScriptName.py
+
+Hier ist PIP: C:\Users\pucheggt\AppData\Local\Programs\Python\Python310\Scripts
+
+Infos: https://nitratine.net/blog/post/convert-py-to-exe/
