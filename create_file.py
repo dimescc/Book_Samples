@@ -10,8 +10,8 @@ print("5 for a Kubernetes Pod")
 print("6 for a LATEX code")
 print("7 for a Shell script")
 print("8 for a Batch script")
-typ = input("9 for a Markup file: ")
-typ_chosen = {"1" : "DOCKER", "2" : "definition.JSON", "3" : "ANSIBLE.cfg", "4" : "script.py", "5" : "kuber_pod.yaml", "6" : "Latex.tex", "7" : "Shell.sh", "8" : "Script.bat", "9" : "markdown.RM"}
+typ = input("9 for a Launcher Config file: ")
+typ_chosen = {"1" : "DOCKER", "2" : "definition.JSON", "3" : "ANSIBLE.cfg", "4" : "script.py", "5" : "kuber_pod.yaml", "6" : "Latex.tex", "7" : "Shell.sh", "8" : "Script.bat", "9" : "launcher_config.xml"}
 
 
 
@@ -135,8 +135,37 @@ elif typ == "5":
 
 # Latex File
 elif typ == "6":
-    print(typ_chosen["6"])
+    typ = input("Document Type or Class (Book, Report, Letter, Article, ...): ")
+    c1 = input("Chapter 1: ")
+    c2 = input("Chapter 2: ")
+    filei = "C:\\MYFiles_TPc\\" + typ_chosen["6"]
+    f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
+    f.write("Document Type ")
+    \documentclass[12pt, letterpaper, twoside]{article}
+\usepackage[utf8]{inputenc}
 
+\title{First document}
+\author{Hubert Farnsworth \thanks{funded by the Overleaf team}}
+\date{February 2014}
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+In this document some extra packages and parameters
+were added. There is an encoding package
+and pagesize and fontsize parameters.
+
+\end{document}
+
+    f.close()
+		
+			
+
+ 
+ 
 #  Shell Script File
 elif typ == "7":
     print(typ_chosen["7"])
@@ -145,9 +174,29 @@ elif typ == "7":
 elif typ == "8":
     print(typ_chosen["8"])
 
-# Mark Down File
+# Launcher config File
 elif typ == "9":
-    print(typ_chosen["9"])
+    impo = input("File to import to the Launcher config? ")
+    group = input("Which group should be created first: ")
+    filei = "C:\\MYFiles_TPc\\" + typ_chosen["9"]
+    f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
+    f.write("\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n")
+    f.write("<items>\n\n")
+    f.write("<!-- Import of Remote Config Files -->\n")
+    f.write("<import>\n")
+    f.write(impo)
+    f.write("</import>\n\n")
+    f.write("   <group>\n")
+    f.write("   <tag>")
+    f.write(group)
+    f.write("</tag>\n")
+    f.write("       <item>\n")
+    f.write("           <name>ITEM</name>\n")
+    f.write("           <url>http://</url>\n")
+    f.write("       </item>\n")
+    f.write("   </group>")
+    f.write("</items>")
+    f.close()
 
 # Break in Case of wrong input!
 else:
