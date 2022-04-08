@@ -112,23 +112,38 @@ elif typ == "5":
 
 # Latex File
 elif typ == "6":
-    typ = input("Document Class (Book, Report, Letter, Article, ...): ")
+    typ = input("Document Class (Article, report, Letter, Book, ...): ")
     tit = input("Title of the Document: ")
     dat = input("Date for the Document: ")
     aut = input("Author of the Document: ")
     filei = "C:\\MYFiles_TPc\\" + typ_chosen["6"]
     f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
-    f.write("\n\documentclass[12pt, letterpaper, twoside]{"); f.write(typ); f.write("}\n")
-    f.write("\usepackage[utf8]{inputenc}\n")
-    f.write("\title{"); f.write(tit); f.write("}\n")
-    f.write("\author{"); f.write(aut); f.write("}\n")
-    f.write("\date{"); f.write(dat); f.write("}\n")
-    f.write("\begin{document}\n")
-    f.write("\begin{titlepage}\n")
-    f.write("\maketitle\n")
-    f.write("\end{titlepage}\n")
-    f.write("This is the text to the document which can be edited later...")
-    f.write("\end{document}\n")
+    f.write("% compiler: https://latex.informatik.uni-halle.de/latex-online/latex.php")
+    f.write("\n\\documentclass[12pt, letterpaper, twoside]{"); f.write(typ); f.write("}\n")
+    f.write("\\usepackage[utf8]{inputenc}\n")
+    f.write("\\usepackage{graphicx}\n")
+    f.write("\\usepackage{pythontex}\n\n")
+    f.write("\\newcommand{\pymultiply}[2]{\py{#1*#2}}\n\n")
+    f.write("\\begin{document}\n\n")
+    f.write("\\title{"); f.write(tit); f.write("}\n")
+    f.write("\\author{"); f.write(aut); f.write("}\n")
+    f.write("\\date{"); f.write(dat); f.write("}\n\n")
+    f.write("\\maketitle\n\n")
+    f.write("\\begin{abstract}\n")
+    f.write("The abstract text goes here. Please use any feasable function available.\n")
+    f.write("\\end{abstract}\n\n")  
+    f.write("\\section{Introduction}\n")
+    f.write("Here is the text of your introduction.\n\n")
+    f.write("\\section{Main Topic}\n")
+    f.write("This is the text to the document which can be edited later...\n\n")
+    f.write("\\begin{pycode}\n")
+    f.write("print(\"Python says Hello!\n")
+    f.write("\\end{pycode}\n\n")
+    f.write("Here some output with pycode if availabel\n\n")
+    f.write("$8 \\times 256 = \pymultiply{8}{256}$\n\n")
+    f.write("\\section{Conclusion}\n")
+    f.write("Write your conclusion here.\n\n")
+    f.write("\\end{document}\n")
     f.close()			
 
  
@@ -139,7 +154,46 @@ elif typ == "7":
 
 # Batch File
 elif typ == "8":
-    print(typ_chosen["8"])
+    nam = input("Name of the script to create? ")
+    filei = "C:\\MYFiles_TPc\\" + nam + "_" + typ_chosen["8"]
+    f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
+    f.write("\necho off\n\n")
+    f.write("")
+    f.write("REM set VARIABLENNAME=empty                                   // Variable zuweisen \n")
+    f.write("REM echo %VARIABLENNAME%  				                // Ausgabe der Variable \n")
+    f.write("REM RENAME [Laufwerk:][Pfad]Dateiname1 Dateiname2             	// umbenennen von Files\n")
+    f.write("REM set /p VARIABLENNAME=Wert               			// Variable abfragen \n")
+    f.write("REM RENAME \\\\frequentis.frq\\vie\\data\\QM\\QM\\Admin\\W_Puchegger\\Meeting_Minutes\\Templates\\QFM21001_Template_for_Minutes.docx NEWNAME.docx\n")
+    f.write("REM https://de.wikibooks.org/wiki/Batch-Programmierung:_Erweiterungen_unter_Windows_NT \n\n")
+    f.write("")
+    f.write("set PSP=empty  							// PSP Variable zuweisen\n")
+    f.write("set ALIAS=empty  				      		// Projektname Variable zuweisen\n")
+    f.write("set PM=empty                                            // Projektleiter Variable zuweisen\n")
+    f.write("set WS=0				         			// Workspace Nr.\n")
+    f.write("set JAMA=0		         					// JAMA ID\n\n")
+    f.write("")
+    f.write("set /p PSP=Eingabe von PSP (z.B. PTEA47)?:\n")
+    f.write("set /p ALIAS=Kurzname (z.B. Noednett - nur EIN Wort! keine Leerzeichen!)?: \n")
+    f.write("set /p PM=Wer ist Projektleiter?: \n")
+    f.write("set /p WS=Welche Nr. hat der Workspace?: \n")
+    f.write("set /p JAMA=JAMA ID des Projektes?: \n\n")
+    f.write("start iexplore http://intranet/SearchCenter/Pages/ProjectsResults.aspx?k=%PSP%\n")
+    f.write("")
+    f.write("C:\\Users\\pucheggt\\\"OneDrive - Constantia Flexibles\"\\Desktop\\open.bat %PSP% %ALIAS% %PM% %WS% %JAMA%\n\n")
+    f.write("")
+    f.write("")
+    f.write("")
+    f.write("REM im open.bat file:\n")
+    f.write("REM Parameter Reihenfolge: %PSP% (%1) %ALIAS% (%2) %PM% (%3) %WS% (%4) %JAMA% (%5)\n")
+    f.write("")
+    f.write("REM SET \"par1=%1\"\n")
+    f.write("REM SET \"par1=%2\"\n")
+    f.write("")
+    f.write("REM echo %par1%\n")
+    f.write("REM echo %par1%\n")
+    f.close()
+
+
 
 # Launcher config File
 elif typ == "9":
