@@ -14,10 +14,12 @@ print("8 for a Batch script")
 typ = input("9 for a Markup file: ")
 typ_chosen = {"1" : "DOCKER", "2" : "definition.JSON", "3" : "ANSIBLE.cfg", "4" : "script.py", "5" : "kuber_pod.yaml", "6" : "Latex.tex", "7" : "Shell.sh", "8" : "Script.bat", "9" : "markdown.RM"}
 
+
+
 # Docker File
 if typ == "1": 
-    appli = input("How is the application called? ")
-    porti = input("Specify the Server Port: ")
+    appli = input("Name of the application: ")
+    porti = input("Running on which Server Port: ")
     filei = "C:\\MYFiles_TPc\\" + typ_chosen["1"]
     f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
     f.write("# Befehle: https://github.com/LeCoupa/awesome-cheatsheets/blob/master/tools/docker.sh\n")
@@ -37,7 +39,31 @@ if typ == "1":
 
 # JSON File
 elif typ == "2":
-    print(typ_chosen["2"])
+    appli = input("Name of the application: ")
+    desc = input("Please insert a useful description: ")
+    vers = input("Which SW Version: ")
+    filei = "C:\\MYFiles_TPc\\" + typ_chosen["2"]
+    f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
+    f.write("{\n")
+    f.write("  \"name\": \"")
+    f.write(appli)
+    f.write("\",\n")
+    f.write("  \"description\": \"")
+    f.write(desc)
+    f.write("\",\n")
+    f.write("  \"version\": \"")
+    f.write(vers)
+    f.write("\",\n")
+    f.write("  \"private\": true,\n")
+    f.write("  \"scripts\": {\n")
+    f.write("    \"start\": \"node ./bin/www\"\n")
+    f.write("  },\n")
+    f.write("  \"dependencies\": {\n")
+    f.write("    \"express\": \"~4.12.2\",\n")
+    f.write("    \"jade\": \"~1.9.2\"\n")
+    f.write("  }\n")
+    f.write("}")
+    f.close()
 
 # Ansible Config File
 elif typ == "3":
