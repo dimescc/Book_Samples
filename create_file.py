@@ -1,7 +1,6 @@
 
 # Super anleitung: https://www.w3schools.com/python/python_file_open.asp
 
-
 print("Please chose:")
 print("1 for a Docker file")
 print("2 for a JSON")
@@ -71,7 +70,20 @@ elif typ == "3":
 
 # Python Script
 elif typ == "4":
-    print(typ_chosen["4"])
+    impor = input("What to import? ")
+    func = input("Function to define: ")
+    filei = "C:\\MYFiles_TPc\\" + typ_chosen["4"]
+    f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
+    f.write("\n# Welcome to the Python script. Copyright T. Puchegger (DIMESCC) 2022 \n\n")
+    f.write("Import ")
+    f.write(impor)
+    f.write("\n\ndef ")
+    f.write(func)
+    f.write(": \n")
+    f.write("   erg = argA * argB \n")
+    f.write("   print(erg)\n\n")
+    f.write(func)
+    f.close()
 
 # Kubernetes Pod and Job
 elif typ == "5": 
