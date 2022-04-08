@@ -1,4 +1,7 @@
-pyinstaller --onefile pythonScriptName.py
+# geht meist nicht: pyinstaller --onefile pythonScriptName.py
+# besser: pyinstaller --clean --noupx -F create_file.py
+
+CMD: pip install pyinstaller
 
 Hier ist PIP: C:\Users\pucheggt\AppData\Local\Programs\Python\Python310\Scripts
 
