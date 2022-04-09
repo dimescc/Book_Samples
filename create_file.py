@@ -148,7 +148,7 @@ elif typ == "6":
 
  
  
-#  Shell Script File
+#  Shell Script File example
 elif typ == "7":
     am = input("Name of the script to create? ")
     filei = "C:\\MYFiles_TPc\\" + typ_chosen["8"]
