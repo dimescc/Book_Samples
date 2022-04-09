@@ -66,16 +66,28 @@ elif typ == "3":
 
 # Python Script
 elif typ == "4":
-    impor = input("What to import? ")
-    func = input("Function to define: ")
+    impor = input("What package to be imported? ")
+    func = input("Function to define (e.g. multipli(argA,argB)): ")
     filei = "C:\\MYFiles_TPc\\" + typ_chosen["4"]
     f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
     f.write("\n# Welcome to the Python script. Copyright T. Puchegger (DIMESCC) 2022 \n\n")
-    f.write("Import "); f.write(impor)
+    f.write("import "); f.write(impor)
+    f.write("\nfrom openpyxl import Workbook, load_workbook # to read from Excel \n")
+    f.write("from openpyxl.utils import get_column_letter # to read from Excel \n")
     f.write("\n\ndef "); f.write(func); f.write(": \n")
     f.write("   erg = argA * argB \n")
-    f.write("   print(erg)\n\n")
-    f.write(func)
+    f.write("   print(\"Result of the function/calculation: \" + str(erg))\n\n")
+    f.write(func);f.write(" # Please insert values or use integer from other functions")
+    f.write("\n\n# Function to read data from Excel\n")
+    f.write("# Specify the columns and Lines range(From, TO)\n")
+    f.write("wb = load_workbook('Grades.xlsx') # Excel sheet to be readed \n")
+    f.write("ws = wb.active \n\n")
+    f.write("print(\"Read af an Excel sheet:\")\n\n")
+    f.write("for row in range(1,11): # Lines to be read from 1 to 11\n")
+    f.write("   for col in range(1,5): # Columns to be read from 1 to 5\n")
+    f.write("       char = get_column_letter(col)\n")
+    f.write("       print(ws[char + str(row)].value)\n\n")
+    f.write("wb.save('Grades.xlsx')\n")
     f.close()
 
 
