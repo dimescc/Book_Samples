@@ -266,7 +266,7 @@ elif typ == "9":
 
 # Break in Case of wrong input!
 else:
-    print("Wrong Input, Cancel!")
+    print("Wrong Input, please use 1 to 9! - Cancel script!")
 
 
 
