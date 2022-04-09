@@ -40,13 +40,5 @@
             "request": "launch",
             "type": "extensionHost"
         },
-        {
-            "name": "Python: Aktuelle Datei",
-            "type": "python",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal",
-            "justMyCode": true
-        }
     ]
 }
