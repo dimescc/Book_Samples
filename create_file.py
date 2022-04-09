@@ -31,6 +31,8 @@ if typ == "1":
     f.write("$ docker run --rm -p 81:5000 blockchain\n")
     f.close()
 
+
+
 # JSON File
 elif typ == "2":
     appli = input("Name of the application: ")
@@ -53,9 +55,14 @@ elif typ == "2":
     f.write("}")
     f.close()
 
+
+
 # Ansible Config File
 elif typ == "3":
     print(typ_chosen["3"])
+
+
+
 
 # Python Script
 elif typ == "4":
@@ -70,6 +77,8 @@ elif typ == "4":
     f.write("   print(erg)\n\n")
     f.write(func)
     f.close()
+
+
 
 # Kubernetes Pod and Job
 elif typ == "5": 
@@ -109,6 +118,8 @@ elif typ == "5":
     f.write("       restartPolicy: OnFailure\n")
     f.write("    # The pod template ends here")
     f.close()
+
+
 
 # Latex File
 elif typ == "6":
@@ -150,11 +161,11 @@ elif typ == "6":
  
 #  Shell Script File example
 elif typ == "7":
-    am = input("Name of the script to create? ")
-    filei = "C:\\MYFiles_TPc\\" + typ_chosen["8"]
+    nam = input("Name of the Shell script to create? ")
+    filei = "C:\\MYFiles_TPc\\" + nam + "_" + typ_chosen["7"]
     f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
     f.write("\n# https://linuxhint.com/30_bash_script_examples/")
-    f.write("\n\nGet arguments from command line with names\n\n")
+    f.write("\n# Get arguments from command line with names\n\n")
     f.write("#!/bin/bash\n\n")
     f.write("for arg in \"$@\"\n")
     f.write("do\n")
@@ -183,12 +194,12 @@ elif typ == "7":
     f.write("(( sum=x+y ))\n\n")
     f.write("echo \"The result of addition=$sum\"\n")
     f.write("\n")
-    f.clsoe()
+    f.close()
     
 
 # Batch File
 elif typ == "8":
-    nam = input("Name of the script to create? ")
+    nam = input("Name of the Batch script to create? ")
     filei = "C:\\MYFiles_TPc\\" + nam + "_" + typ_chosen["8"]
     f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
     f.write("\necho off\n\n")
