@@ -1,6 +1,6 @@
 def mathe(eins,zwei):
     erg = eins*(zwei/12)
-    print(erg)
+    print("eins mal zwei durch 12 ist: " + str(erg))
 
 mathe(3,2)
 
@@ -9,4 +9,4 @@ product = 1
 for number in numbers:
     product = product * number
  
-print('The product is: ', product)
+print('The product (multiplication) is: ', product)
