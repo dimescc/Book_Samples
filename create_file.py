@@ -188,7 +188,7 @@ elif typ == "7":
     f.write("       X) x=$val;;\n\n")
     f.write("       Y) y=$val;;\n\n")
     f.write("*)\n")
-    f.write("esac\n")
+    f.write("esac\n"),
     f.write("done\n")
     f.write("((result=x+y))\n")
     f.write("echo \"X+Y=$result\"\n\n\n\n")
