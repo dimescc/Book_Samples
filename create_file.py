@@ -150,7 +150,41 @@ elif typ == "6":
  
 #  Shell Script File
 elif typ == "7":
-    print(typ_chosen["7"])
+    am = input("Name of the script to create? ")
+    filei = "C:\\MYFiles_TPc\\" + typ_chosen["8"]
+    f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
+    f.write("\n# https://linuxhint.com/30_bash_script_examples/")
+    f.write("\n\nGet arguments from command line with names\n\n")
+    f.write("#!/bin/bash\n\n")
+    f.write("for arg in \"$@\"\n")
+    f.write("do\n")
+    f.write("   index=$(echo $arg | cut -f1 -d=)\n")
+    f.write("   val=$(echo $arg | cut -f2 -d=)\n")
+    f.write("   case $index in\n")
+    f.write("       X) x=$val;;\n\n")
+    f.write("       Y) y=$val;;\n\n")
+    f.write("*)\n")
+    f.write("esac\n")
+    f.write("done\n")
+    f.write("((result=x+y))\n")
+    f.write("echo \"X+Y=$result\"\n\n\n\n")
+    f.write("# String combine samples\n")
+    f.write("string1=\"Linux\"\n")
+    f.write("string2=\"Hint\"\n")
+    f.write("echo \"$string1$string2\"\n")
+    f.write("string3=$string1+$string2\n")
+    f.write("string3+=\" is a good tutorial blog site\"\n")
+    f.write("echo $string3\n\n\n")
+    f.write("# add two numbers\n")
+    f.write("echo \"Enter first number\"\n")
+    f.write("read x\n")
+    f.write("echo \"Enter second number\"\n")
+    f.write("read y\n")
+    f.write("(( sum=x+y ))\n\n")
+    f.write("echo \"The result of addition=$sum\"\n")
+    f.write("\n")
+    f.clsoe()
+    
 
 # Batch File
 elif typ == "8":
