@@ -71,6 +71,7 @@ elif typ == "4":
     filei = "C:\\MYFiles_TPc\\" + typ_chosen["4"]
     f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
     f.write("\n# Welcome to the Python script. Copyright T. Puchegger (DIMESCC) 2022 \n\n")
+    f.write("# Python to EXE: pyinstaller --clean --noupx -F create_file.py")
     f.write("import "); f.write(impor)
     f.write("\nfrom openpyxl import Workbook, load_workbook # to read from Excel \n")
     f.write("from openpyxl.utils import get_column_letter # to read from Excel \n")
