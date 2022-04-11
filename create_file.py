@@ -1,17 +1,38 @@
 
 # Super anleitung: https://www.w3schools.com/python/python_file_open.asp
 
-print("Please chose:")
-print("1 for a Docker file")
-print("2 for a JSON")
-print("3 for an ANSIBLE file")
-print("4 for a Python script")
-print("5 for a Kubernetes Pod")
-print("6 for a LATEX code")
-print("7 for a Shell script")
-print("8 for a Batch script")
-typ = input("9 for a Launcher Config file: ")
-typ_chosen = {"1" : "DOCKER", "2" : "definition.JSON", "3" : "ANSIBLE.cfg", "4" : "script.py", "5" : "kuber_pod.yaml", "6" : "Latex.tex", "7" : "Shell.sh", "8" : "Script.bat", "9" : "launcher_config.xml"}
+import os
+from numpy import datetime_as_string
+from datetime import date
+
+generic_path = "C:\\MYFiles_TPc\\"
+mm_template = "C:\\temp\\"
+
+
+fileName = r"'read_file.cfg"
+if(os.path.isfile(fileName)):
+    datei = open('read_file.cfg','r')
+    content = datei.readlines() 
+    generic_path = content[0]
+    m_template = content[1]
+    datei.close()     
+
+
+    
+print("1: create a Docker file")
+print("2: create a JSON script")
+print("3: create an ANSIBLE configuration file")
+print("4: create a Python script / module")
+print("5: create a Kubernetes Pod and Job")
+print("6: create a LATEX definition file")
+print("7: create a UNIX / Shell script")
+print("8: create a Windows Batch script")
+print("9: create a Launcher configuration file (XML)")
+print("0: Logstash configuration file")
+print("m: Meeting Minute")
+typ = input("Choose a file type / configuration to create: ")
+typ_choosen = {"1" : "DOCKER", "2" : "definition.JSON", "3" : "ANSIBLE.cfg", "4" : "script.py", "5" : "kuber_pod.yaml", "6" : "article.tex", \
+    "7" : "Shell.sh", "8" : "Script.bat", "9" : "launcher_config.xml", "0" : "Logstash.cfg", "m" : "Meeting_Minute.docx"}
 
 
 
@@ -19,7 +40,7 @@ typ_chosen = {"1" : "DOCKER", "2" : "definition.JSON", "3" : "ANSIBLE.cfg", "4" 
 if typ == "1": 
     appli = input("Name of the application: ")
     porti = input("Running on which Server Port: ")
-    filei = "C:\\MYFiles_TPc\\" + typ_chosen["1"]
+    filei = generic_path + typ_choosen["1"]
     f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
     f.write("# Befehle: https://github.com/LeCoupa/awesome-cheatsheets/blob/master/tools/docker.sh\n")
     f.write("# Create a local Docker container, Clone this repository first:\n\n")
@@ -38,7 +59,7 @@ elif typ == "2":
     appli = input("Name of the application: ")
     desc = input("Please insert a useful description: ")
     vers = input("Which SW Version: ")
-    filei = "C:\\MYFiles_TPc\\" + typ_chosen["2"]
+    filei = generic_path + typ_choosen["2"]
     f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
     f.write("{\n")
     f.write("  \"name\": \""); f.write(appli); f.write("\",\n")
@@ -59,36 +80,68 @@ elif typ == "2":
 
 # Ansible Config File
 elif typ == "3":
-    print(typ_chosen["3"])
-
-
+    impor = input("What package to be imported? ")
+    func = input("Function to define (e.g. multipli(argA,argB)): ")
+    filei = generic_path + typ_choosen["3"]
+    f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
+    f.write("\n# Welcome to this Ansible script. Copyright T. Puchegger (DIMESCC) 2022 \n\n")
+    f.write("# Ansible is a radically simple IT automation system. It handles configuration management, application deployment, \n")
+    f.write("# cloud provisioning, ad-hoc task execution, network automation, and multi-node orchestration. Ansible makes complex \n")
+    f.write("# changes like zero-downtime rolling updates with load balancers easy. More information on the Ansible website https://ansible.com\n")
+    f.write("# https://github.com/ansible/ansible\n\n")
+    f.close()
 
 
 # Python Script
 elif typ == "4":
     impor = input("What package to be imported? ")
-    func = input("Function to define (e.g. multipli(argA,argB)): ")
-    filei = "C:\\MYFiles_TPc\\" + typ_chosen["4"]
+    #func = input("Function to define (e.g. multipli(argA,argB)): ")
+    filei = generic_path + typ_choosen["4"]
     f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
-    f.write("\n# Welcome to the Python script. Copyright T. Puchegger (DIMESCC) 2022 \n\n")
-    f.write("# Python to EXE: pyinstaller --clean --noupx -F create_file.py")
+    f.write("\n# Welcome to this Python script. Copyright T. Puchegger (DIMESCC) 2022 \n")
+    f.write("# Python to EXE: pyinstaller --clean --noupx -F create_file.py\n\n")
     f.write("import "); f.write(impor)
     f.write("\nfrom openpyxl import Workbook, load_workbook # to read from Excel \n")
     f.write("from openpyxl.utils import get_column_letter # to read from Excel \n")
-    f.write("\n\ndef "); f.write(func); f.write(": \n")
+    f.write("\n\ndef "); f.write("multipli(argA,argB)"); f.write(": \n")
     f.write("   erg = argA * argB \n")
     f.write("   print(\"Result of the function/calculation: \" + str(erg))\n\n")
-    f.write(func);f.write(" # Please insert values or use integer from other functions")
-    f.write("\n\n# Function to read data from Excel\n")
-    f.write("# Specify the columns and Lines range(From, TO)\n")
+    f.write("multipli(argA,argB)");f.write(" # Please insert values or use integer from other functions\n\n\n\n")
+    # additional code to read data from Excel Sheets
+    f.write("# Function to read data from an Excel Sheet\n")
+    f.write("# Specify the columns and Lines range(From, TO)\n\n")
     f.write("wb = load_workbook('Grades.xlsx') # Excel sheet to be readed \n")
     f.write("ws = wb.active \n\n")
-    f.write("print(\"Read af an Excel sheet:\")\n\n")
+    f.write("print(\"Read from an Excel sheet: \")\n\n")
     f.write("for row in range(1,11): # Lines to be read from 1 to 11\n")
     f.write("   for col in range(1,5): # Columns to be read from 1 to 5\n")
     f.write("       char = get_column_letter(col)\n")
     f.write("       print(ws[char + str(row)].value)\n\n")
-    f.write("wb.save('Grades.xlsx')\n")
+    f.write("wb.save('Grades.xlsx')\n\n\n\n")
+    # additional code for SQL connection
+    f.write("# Function to connect and access SQL Server (SQL connection)\n")
+    f.write("# https://www.w3schools.com/python/python_mysql_select.asp\n\n")
+    f.write("import mysql.connector\n\n")
+    f.write("mydb = mysql.connector.connect(\n")
+    f.write("  host=\"localhost\",\n")
+    f.write("  user=\"USERNAME\",\n")
+    f.write("  password=\"PASSWORD\",\n")
+    f.write("  database=\"mydatabase\"\n")
+    f.write(")\n\n")
+    f.write("mycursor = mydb.cursor()\n")
+    f.write("mycursor.execute(\"SELECT name, address FROM customers\")\n")
+    f.write("myresult = mycursor.fetchall()\n\n")
+    f.write("for x in myresult:\n")
+    f.write("  print(x)\n\n\n\n")
+     # additional code for file operations
+    f.write("# Function to open, read and write Files (file operations)n\n")
+    f.write("f = open(\"demofile2.txt\", \"a\") # a = append / anfügen, w = Overwrite / löschen, neu schreiben\n")
+    f.write("f.write(\"Now the file has more content!\")\n")            
+    f.write("f.close()\n")
+    f.write("f = open(\"demofile.txt\", \"r\")\n\n")
+    f.write("for x in f:\n")
+    f.write("  print(x)\n")
+    f.write("f.close()\n\n")
     f.close()
 
 
@@ -98,7 +151,7 @@ elif typ == "5":
     appli = input("How is the application called? ")
     vers = input("Specify the SW Version: ")
     port = input("Running on which port? ")
-    filei = "C:\\MYFiles_TPc\\" + typ_chosen["5"]
+    filei = generic_path + typ_choosen["5"]
     f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
     f.write("\nPod creation:\n")
     f.write("apiVersion: v1\n")
@@ -114,7 +167,10 @@ elif typ == "5":
     f.write("\n\n # To create the Pod shown above, run the following command:")
     f.write("\n # kubectl apply -f https://k8s.io/examples/pods/simple-pod.yaml")
     f.close()
-    f = open("C:\\MYFiles_TPc\\kuber_job.py", "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
+    
+    # Create additionally a Job for the Kubernetes Pod
+    jobfile = generic_path + "kuber_job.py"
+    f = open(jobfile, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
     f.write("# The sample below is a manifest for a simple Job with a template that starts one container. The container in that Pod prints a message then pauses.\n\n")
     f.write("apiVersion: batch/v1\n")
     f.write("kind: Job\n")
@@ -140,7 +196,7 @@ elif typ == "6":
     tit = input("Title of the Document: ")
     dat = input("Date for the Document: ")
     aut = input("Author of the Document: ")
-    filei = "C:\\MYFiles_TPc\\" + typ_chosen["6"]
+    filei = generic_path + typ_choosen["6"]
     f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
     f.write("% compiler: https://latex.informatik.uni-halle.de/latex-online/latex.php")
     f.write("\n\\documentclass[12pt, letterpaper, twoside]{"); f.write(typ); f.write("}\n")
@@ -175,7 +231,7 @@ elif typ == "6":
 #  Shell Script File example
 elif typ == "7":
     nam = input("Name of the Shell script to create? ")
-    filei = "C:\\MYFiles_TPc\\" + nam + "_" + typ_chosen["7"]
+    filei = generic_path + nam + "_" + typ_choosen["7"]
     f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
     f.write("\n# https://linuxhint.com/30_bash_script_examples/")
     f.write("\n# Get arguments from command line with names\n\n")
@@ -213,7 +269,7 @@ elif typ == "7":
 # Batch File
 elif typ == "8":
     nam = input("Name of the Batch script to create? ")
-    filei = "C:\\MYFiles_TPc\\" + nam + "_" + typ_chosen["8"]
+    filei = generic_path + nam + "_" + typ_choosen["8"]
     f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
     f.write("\necho off\n\n")
     f.write("")
@@ -257,7 +313,7 @@ elif typ == "8":
 elif typ == "9":
     impo = input("File to import to the Launcher config? ")
     group = input("Which group should be created first: ")
-    filei = "C:\\MYFiles_TPc\\" + typ_chosen["9"]
+    filei = generic_path + typ_choosen["9"]
     f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
     f.write("\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n")
     f.write("<items>\n\n")
@@ -277,6 +333,42 @@ elif typ == "9":
     f.write("</items>")
     f.close()
 
+
+
+
+# Logstash config File
+elif typ == "0":
+    srv = input("Which ELK server / IP / Localhost? ")
+    porti = input("Which port to be monitored: ")
+    filei = generic_path + typ_choosen["0"]
+    f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
+    f.write("\n# Script created 2022, Copyright by T. Puchegger (DimesCC)\n")
+    f.write("# Reference: https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html\n")
+    f.write("# Parse commands: https://www.elastic.co/guide/en/logstash/8.1/advanced-pipeline.html\n")
+    f.write("\n# Sample Logstash configuration for receiving data from server (variable: srv) over \n")
+    f.write("# UDP (maybe change to TCP) syslog messages over port 514 (variable: porti)\n\n")
+    f.write("input {\n")
+    f.write("  udp {\n")
+    f.write("    port => "); f.write(porti)
+    f.write("\n    type => \"syslog\"\n")
+    f.write("  }\n")
+    f.write("}\n\n")
+    f.write("output {\n")
+    f.write("  elasticsearch { hosts => [\""); f.write(srv); f.write(":"); f.write(porti); f.write("\"] }\n")
+    f.write("  stdout { codec => rubydebug }\n")
+    f.write("}\n")
+    f.close()
+
+
+# Meeting Minute config File
+elif typ == "m":
+    mm = input("Which Topic or Meeting? ")
+    filei = generic_path + str(date.today()) + "_" + mm + "_" + typ_choosen["m"]
+    f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
+    f.write("\n# Script created 2022, Copyright by T. Puchegger (DimesCC)\n")
+    
+    
+    
 # Break in Case of wrong input!
 else:
     print("Wrong Input, please use 1 to 9! - Cancel script!")
@@ -286,29 +378,16 @@ else:
 
 
 
-""" File operationen
-f = open("demofile2.txt", "a") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
-f.write("Now the file has more content!")
-f.close()
+""" 
+a function to open a Github file
 
-f = open("demofile.txt", "r")
-for x in f:
-  print(x)
-f.close()
-"""
-
-
-
-""" eine Funktion um ein Github file zu öffnen
 from __future__ import annotations
 from yaml import safe_load
 from ansible.release import __codename__
 
-
 def main():
     with open('.github/RELEASE_NAMES.yml') as f:
         releases = safe_load(f.read())
-
     # Why this format?  The file's sole purpose is to be read by a human when they need to know
     # which release names have already been used.  So:
     # 1) It's easier for a human to find the release names when there's one on each line
@@ -319,8 +398,6 @@ def main():
     else:
         print('.github/RELEASE_NAMES.yml: Current codename was not present in the file')
 
-
 if __name__ == '__main__':
     main()
-
 """
