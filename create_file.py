@@ -1,7 +1,10 @@
 
 # Super anleitung: https://www.w3schools.com/python/python_file_open.asp
+# configurationfile "create_fiel.json" to define generic path, filenames, template path, ... check if available (if(os.path.isfile(fileName)):), read config...
 
-import os
+
+import os # files open, write, ...
+import itertools # functions for count, steps, ... very usefull, see description 
 from numpy import datetime_as_string
 from datetime import date
 
