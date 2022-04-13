@@ -1,27 +1,55 @@
 
 # Super anleitung: https://www.w3schools.com/python/python_file_open.asp
 # configurationfile "create_fiel.json" to define generic path, filenames, template path, ... check if available (if(os.path.isfile(fileName)):), read config...
+# Pip path: C:\Users\pucheggt\AppData\Local\Programs\Python\Python310\Scripts
 
 
 import os # files open, write, ...
 import itertools # functions for count, steps, ... very usefull, see description 
-from numpy import datetime_as_string
+import timeit # for timer functions
+import json # for parsing of JSON files
+
+# from numpy import datetime_as_string
 from datetime import date
 
+
+# Standad config used if no dedicated config (json or cfg) is available
 generic_path = "C:\\MYFiles_TPc\\"
 mm_template = "C:\\temp\\"
+mm_path = "C:\\temp\\"
 
 
-fileName = r"'read_file.cfg"
-if(os.path.isfile(fileName)):
-    datei = open('read_file.cfg','r')
+filename_json = r"create_file.json"
+filename_cfg = r"create_file.cfg"
+
+
+# parsing of JSON: https://wiki.selfhtml.org/wiki/JSON/parse
+# parsing better: https://www.geeksforgeeks.org/read-json-file-using-python/
+# json.loads(jsonstring) #for Json string
+# json.loads(fileobject.read()) #for fileobject
+if(os.path.isfile(filename_json)): # read from JSON file, if no json file is availabel, try to read from cfg file
+    f = open('create_file.json')
+    content = f.readlines()
+    generic_path = content[1]
+    mm_template = content[2]
+    mm_path = content[3]
+    readed = True
+    print("JSON config loaded...\n")
+    f.close()     
+
+if(os.path.isfile(filename_cfg) and readed != True): # read if no json is available. if also no cfg is available, use standard configuration from above
+    datei = open('create_file.cfg','r')
     content = datei.readlines() 
-    generic_path = content[0]
-    m_template = content[1]
-    datei.close()     
+    generic_path = content[1]
+    mm_template = content[2]
+    mm_path = content[3]
+    print("config file loaded...\n")
+    datei.close() 
 
 
-    
+
+
+
 print("1: create a Docker file")
 print("2: create a JSON script")
 print("3: create an ANSIBLE configuration file")
@@ -36,6 +64,10 @@ print("m: Meeting Minute")
 typ = input("Choose a file type / configuration to create: ")
 typ_choosen = {"1" : "DOCKER", "2" : "definition.JSON", "3" : "ANSIBLE.cfg", "4" : "script.py", "5" : "kuber_pod.yaml", "6" : "article.tex", \
     "7" : "Shell.sh", "8" : "Script.bat", "9" : "launcher_config.xml", "0" : "Logstash.cfg", "m" : "Meeting_Minute.docx"}
+
+
+duration = 0
+start = timeit.default_timer() # start timer to count the used time for the creation
 
 
 
@@ -57,7 +89,9 @@ if typ == "1":
 
 
 
-# JSON File
+# JSON File (JavaScript Object Notation): https://de.wikipedia.org/wiki/JavaScript_Object_Notation
+# JSON is a data interchange format and only provides a data encoding specification. 
+# XML is a language to specify custom markup languages, and provides a lot more than data interchange.
 elif typ == "2":
     appli = input("Name of the application: ")
     desc = input("Please insert a useful description: ")
@@ -103,10 +137,12 @@ elif typ == "4":
     f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
     f.write("\n# Welcome to this Python script. Copyright T. Puchegger (DIMESCC) 2022 \n")
     f.write("# Python to EXE: pyinstaller --clean --noupx -F create_file.py\n\n")
+    f.write("#!/usr/bin/python\n")
+    f.write("# -*- coding: utf-8 -*-\n\n")
     f.write("import "); f.write(impor)
     f.write("\nimport os # files open, write, ...\n")
     f.write("import itertools # functions for count, steps, ... very usefull, see description \n")
-    f.write("from numpy import datetime_as_string # date, time functions"\n)
+    f.write("from numpy import datetime_as_string # date, time functions\n")
     f.write("from datetime import # date and time functions\n")
     f.write("\nfrom openpyxl import Workbook, load_workbook # to read from Excel \n")
     f.write("from openpyxl.utils import get_column_letter # to read from Excel \n")
@@ -371,8 +407,7 @@ elif typ == "0":
 elif typ == "m":
     mm = input("Which Topic or Meeting? ")
     filei = generic_path + str(date.today()) + "_" + mm + "_" + typ_choosen["m"]
-    f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
-    f.write("\n# Script created 2022, Copyright by T. Puchegger (DimesCC)\n")
+    # f = open(filei, "w") # a = append / anfügen, w = Overwrite / löschen, neu schreiben
     
     
     
@@ -382,29 +417,6 @@ else:
 
 
 
+duration += timeit.default_timer() - start
+print("Time (seconds) elapsed to specify the paramaters and create the file: " + str(round(duration,2)))
 
-
-
-""" 
-a function to open a Github file
-
-from __future__ import annotations
-from yaml import safe_load
-from ansible.release import __codename__
-
-def main():
-    with open('.github/RELEASE_NAMES.yml') as f:
-        releases = safe_load(f.read())
-    # Why this format?  The file's sole purpose is to be read by a human when they need to know
-    # which release names have already been used.  So:
-    # 1) It's easier for a human to find the release names when there's one on each line
-    # 2) It helps keep other people from using the file and then asking for new features in it
-    for name in (r.split(maxsplit=1)[1] for r in releases):
-        if __codename__ == name:
-            break
-    else:
-        print('.github/RELEASE_NAMES.yml: Current codename was not present in the file')
-
-if __name__ == '__main__':
-    main()
-"""
