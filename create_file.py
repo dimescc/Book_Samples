@@ -2,13 +2,12 @@
 # Super anleitung: https://www.w3schools.com/python/python_file_open.asp
 # configurationfile "create_fiel.json" to define generic path, filenames, template path, ... check if available (if(os.path.isfile(fileName)):), read config...
 # Pip path: C:\Users\pucheggt\AppData\Local\Programs\Python\Python310\Scripts
-
+# folder, path, file and operations: https://www.decocode.de/?323
 
 import os # files open, write, ...
 import itertools # functions for count, steps, ... very usefull, see description 
 import timeit # for timer functions
 import json # for parsing of JSON files
-
 # from numpy import datetime_as_string
 from datetime import date
 
@@ -46,8 +45,23 @@ if(os.path.isfile(filename_cfg) and readed != True): # read if no json is availa
     print("config file loaded...\n")
     datei.close() 
 
+  
+createpath = generic_path.replace("\\","/")
+createpathx = createpath[10:2]
+print(createpathx)
+# if not os.path.exists(createpath):
+#    os.makedirs(createpath)
 
 
+# Change of permissions 
+# mode = 509    # Dezimalschreibweise
+# os.chmod(path, mode)
+
+# umbenennen von files, Ordnern
+# os.renames(source, target)
+
+# Home Verzeichnis: 
+# os.environ['HOME'] + "/Python/testdatei.py"
 
 
 print("1: create a Docker file")
