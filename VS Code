@@ -1,3 +1,5 @@
+Wenn probleme mit einem Paket das installiert aber nicht gefunden dann in VS Code bei Datei - Einstellungen - EInstellungen - Python - bei Default Interpreter Path -> 
+  -> den Pfad eingeben "C:\Users\dimes\AppData\Local\Programs\Python\Python310"
 Tips and tricks: https://code.visualstudio.com/docs/getstarted/tips-and-tricks
 Commandos: Keyboard Shortcut: Ctrl+Shift+P
 Open Recent file: Ctrl+R
