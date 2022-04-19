@@ -1,3 +1,7 @@
+# Anleitung: https://www.ionos.at/digitalguide/websites/web-entwicklung/web-scraping-mit-python/
+# Test URL: http://quotes.toscrape.com/
+
+
 # Module importieren
 import requests
 import csv
