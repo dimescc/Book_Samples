@@ -4,5 +4,9 @@
 CMD: pip install pyinstaller
 
 Hier ist PIP: C:\Users\pucheggt\AppData\Local\Programs\Python\Python310\Scripts
+Oder hier: C:\Users\p70r\AppData\Roaming\Python\Python310\Scripts>
+
+Ausführen von: pyinstaller -w White_Screen1.py
+für ein File oder Script
 
 Infos: https://nitratine.net/blog/post/convert-py-to-exe/
