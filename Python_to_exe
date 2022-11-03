@@ -9,6 +9,8 @@ Oder hier: C:\Users\p70r\AppData\Roaming\Python\Python310\Scripts>
 Ausführen von: pyinstaller -w White_Screen1.py
 für ein File oder Script
 
-ODER mit AUTO-PY-TO-EXE: https://pypi.org/project/auto-py-to-exe/
+ODER besser mit AUTO-PY-TO-EXE: https://pypi.org/project/auto-py-to-exe/ 
+-> dann: python -m pip install -r requirements.txt
+-> python -m auto_py_to_exe
 
 Infos: https://nitratine.net/blog/post/convert-py-to-exe/
