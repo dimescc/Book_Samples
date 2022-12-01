@@ -14,3 +14,7 @@ ODER besser mit AUTO-PY-TO-EXE: https://pypi.org/project/auto-py-to-exe/
 -> python -m auto_py_to_exe
 
 Infos: https://nitratine.net/blog/post/convert-py-to-exe/
+
+
+SCHEINBAR direkt auf Linux mit dem Tool cxfreeze, das macht aus einem Script ein Binary:
+cxfreeze webserver.py 
